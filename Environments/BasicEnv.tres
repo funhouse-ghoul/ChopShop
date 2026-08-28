@@ -1,0 +1,5 @@
+[gd_resource type="Environment" format=3 uid="uid://b4qygowk1fcof"]
+
+[resource]
+fog_enabled = true
+fog_light_energy = 1.82
