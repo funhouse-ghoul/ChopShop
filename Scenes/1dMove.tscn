@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://v8yewte0cw5"]
+
+[ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_pwn5b"]
+[ext_resource type="Script" uid="uid://c1glg4feps1eb" path="res://Scripts/player_path_follow.gd" id="2_5cvax"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="Curve3D" id="Curve3D_kgtat"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0.045),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kgtat"]
+
+[node name="World" type="Node3D" unique_id=1415019361]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1587728660]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1806852919]
+transform = Transform3D(1, 0, 0, 0, -0.00077621534, 0.9999997, 0, -0.9999997, -0.00077621534, 0, 4.8310947, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2083300055]
+environment = ExtResource("1_pwn5b")
+
+[node name="Geometry" type="Node3D" parent="." unique_id=597021514]
+
+[node name="Floor" type="MeshInstance3D" parent="Geometry" unique_id=1694409454]
+mesh = SubResource("PlaneMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor" unique_id=268375192]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/StaticBody3D" unique_id=1563215489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_kgtat")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1862482535]
+curve = SubResource("Curve3D_kgtat")
+
+[node name="PlayerPathFollow" type="PathFollow3D" parent="Path3D" unique_id=1122694956]
+transform = Transform3D(-0.008999708, 0, -0.9999551, 0, 0.99997985, 0, 0.99995524, 0, -0.008999706, 4.999898, 0, 0.04499908)
+progress = 10.0
+loop = false
+script = ExtResource("2_5cvax")
+prog_spd = 0.1
+
+[node name="LightDummy" type="MeshInstance3D" parent="Path3D/PlayerPathFollow" unique_id=1297722043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3013675, 0)
+mesh = SubResource("CapsuleMesh_kgtat")
+
+[node name="Playercam" type="Camera3D" parent="Path3D/PlayerPathFollow/LightDummy" unique_id=215360606]
+transform = Transform3D(-4.377216e-08, -0.40035602, 0.9163643, -2.1319124e-10, 0.91637886, 0.40036237, -1.0000044, 1.792796e-08, -4.0978193e-08, 2.6234603, 1.619256, -0.009280205)
