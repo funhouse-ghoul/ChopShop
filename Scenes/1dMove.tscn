@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://v8yewte0cw5"]
 
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_pwn5b"]
-[ext_resource type="Script" uid="uid://c1glg4feps1eb" path="res://Scripts/player_path_follow.gd" id="2_5cvax"]
+[ext_resource type="Script" uid="uid://c1glg4feps1eb" path="res://Scripts/1d_player_mov.gd" id="2_5cvax"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
 size = Vector2(10, 10)
