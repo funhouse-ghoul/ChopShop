@@ -3,23 +3,17 @@
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_f04nv"]
 [ext_resource type="Script" uid="uid://dgpmbcntp0hpt" path="res://Scripts/2d_player_mov.gd" id="1_vqktc"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kgtat"]
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
 size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
 size = Vector3(10, 0.1, 10)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kgtat"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kgtat"]
+
 [node name="World" type="Node3D" unique_id=1415019361]
-
-[node name="LightDummy" type="MeshInstance3D" parent="." unique_id=1297722043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3013675, 0)
-mesh = SubResource("CapsuleMesh_kgtat")
-script = ExtResource("1_vqktc")
-
-[node name="Playercam" type="Camera3D" parent="LightDummy" unique_id=215360606]
-transform = Transform3D(-4.0065174e-08, 0.39984143, -0.9165843, 1.7477626e-08, 0.9165843, 0.39984143, 1, -1.7763568e-15, -4.3711392e-08, -2.1280668, 1.658468, 0.025782585)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1587728660]
 
@@ -39,3 +33,16 @@ mesh = SubResource("PlaneMesh_kgtat")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/StaticBody3D" unique_id=1563215489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_kgtat")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=479084047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0595083, 0)
+script = ExtResource("1_vqktc")
+
+[node name="LightDummy" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1297722043]
+mesh = SubResource("CapsuleMesh_kgtat")
+
+[node name="Playercam" type="Camera3D" parent="CharacterBody3D/LightDummy" unique_id=215360606]
+transform = Transform3D(-4.0065174e-08, 0.39984143, -0.9165843, 1.7477626e-08, 0.9165843, 0.39984143, 1, -1.7763568e-15, -4.3711392e-08, -2.1280668, 1.658468, 0.025782585)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=395495966]
+shape = SubResource("CapsuleShape3D_kgtat")
