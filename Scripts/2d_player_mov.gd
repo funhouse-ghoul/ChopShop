@@ -18,6 +18,9 @@ func _physics_process(delta: float) -> void:
 			lin_2d_move()
 	move_and_slide()
 	#---End---
+	
+func update_velocity(vec: Vector3)->void:
+	velocity = vec.normalized()*lin_spd
 
 #applies y movement around rotation
 func proc_y_rotation(delta):
@@ -42,6 +45,3 @@ func lin_1d_and_rot(delta):
 func lin_2d_move() -> void:
 	var vec = (get_lin_move_x()+get_lin_move_y())
 	update_velocity(vec)
-
-func update_velocity(vec: Vector3)->void:
-	velocity = vec.normalized()*lin_spd
