@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var y_rot_spd := 1.0  
 @export var lin_spd := 1.0
-enum Move_Style {TANK, FLAT2D}
+enum Move_Style {TANK, FLAT2D, PLANETWIST}
 @export var mov_sty := Move_Style.TANK
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +16,8 @@ func _physics_process(delta: float) -> void:
 			lin_1d_and_rot(delta)
 		Move_Style.FLAT2D:
 			lin_2d_move()
+		Move_Style.PLANETWIST:
+			plane_and_rot_move(delta)
 	move_and_slide()
 	#---End---
 	
@@ -26,7 +28,7 @@ func update_velocity(vec: Vector3)->void:
 func proc_y_rotation(delta):
 	transform.basis = transform.basis.rotated(
 		transform.basis.y,
-		Input.get_axis("io+y","io-y")*delta*y_rot_spd)
+		Input.get_axis("io+r","io-r")*delta*y_rot_spd)
 
 #Applies motion to object in x axis
 func get_lin_move_x(): 
@@ -45,3 +47,7 @@ func lin_1d_and_rot(delta):
 func lin_2d_move() -> void:
 	var vec = (get_lin_move_x()+get_lin_move_y())
 	update_velocity(vec)
+	
+func plane_and_rot_move(delta) -> void:
+	proc_y_rotation(delta)
+	lin_2d_move()

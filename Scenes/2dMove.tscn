@@ -37,7 +37,7 @@ shape = SubResource("BoxShape3D_kgtat")
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=479084047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0595083, 0)
 script = ExtResource("1_vqktc")
-mov_sty = 1
+mov_sty = 2
 
 [node name="LightDummy" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1297722043]
 mesh = SubResource("CapsuleMesh_kgtat")
