@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgpmbcntp0hpt" path="res://Scripts/2d_player_mov.gd" id="1_uql71"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kgtat"]
+[sub_resource type="PrismMesh" id="PrismMesh_na4qu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kgtat"]
 
@@ -11,7 +11,7 @@ script = ExtResource("1_uql71")
 mov_sty = 2
 
 [node name="LightDummy" type="MeshInstance3D" parent="." unique_id=1217479281]
-mesh = SubResource("CapsuleMesh_kgtat")
+mesh = SubResource("PrismMesh_na4qu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1757837311]
 shape = SubResource("CapsuleShape3D_kgtat")

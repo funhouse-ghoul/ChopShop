@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cjt4bet8afxch"]
+
+[ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_na4qu"]
+[ext_resource type="PackedScene" uid="uid://2besls77sjdb" path="res://Prefabs/player_character.tscn" id="2_tsbx5"]
+[ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scenes/PlayerView.gd" id="3_tsbx5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
+size = Vector3(10, 0.1, 10)
+
+[node name="World" type="Node3D" unique_id=1415019361]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1587728660]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1806852919]
+transform = Transform3D(1, 0, 0, 0, -0.00077621534, 0.9999997, 0, -0.9999997, -0.00077621534, 0, 4.8310947, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2083300055]
+environment = ExtResource("1_na4qu")
+
+[node name="Geometry" type="Node3D" parent="." unique_id=597021514]
+
+[node name="Floor" type="MeshInstance3D" parent="Geometry" unique_id=1694409454]
+mesh = SubResource("PlaneMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor" unique_id=268375192]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/StaticBody3D" unique_id=1563215489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_kgtat")
+
+[node name="PlayerCharacter" parent="." unique_id=825253521 instance=ExtResource("2_tsbx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0024688, 0)
+
+[node name="WorldCam" type="Camera3D" parent="." unique_id=215360606]
+transform = Transform3D(-3.5865654e-08, 0.5716315, -0.8205105, 2.4986807e-08, 0.8205105, 0.5716315, 1, -1.7763568e-15, -4.3711392e-08, -1.9354603, 3.316549, 0.025782108)
+current = true
+script = ExtResource("3_tsbx5")

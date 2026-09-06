@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ChopShopBase"
-run/main_scene="uid://d14t6ngwavtp5"
+run/main_scene="uid://cjt4bet8afxch"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
