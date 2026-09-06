@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	#---End---
 	
+#Function to affect velocity uniformly
 func update_velocity(vec: Vector3)->void:
 	velocity = vec.normalized()*lin_spd
 
@@ -47,7 +48,8 @@ func lin_1d_and_rot(delta):
 func lin_2d_move() -> void:
 	var vec = (get_lin_move_x()+get_lin_move_y())
 	update_velocity(vec)
-	
+
+#Encapsulate repr. both 2d movement and a rotation comp.
 func plane_and_rot_move(delta) -> void:
 	proc_y_rotation(delta)
 	lin_2d_move()
