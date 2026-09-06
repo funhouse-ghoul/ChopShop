@@ -2,13 +2,16 @@
 
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_na4qu"]
 [ext_resource type="PackedScene" uid="uid://2besls77sjdb" path="res://Prefabs/player_character.tscn" id="2_tsbx5"]
-[ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scenes/PlayerView.gd" id="3_tsbx5"]
+[ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scripts/PlayerView.gd" id="3_tsbx5"]
+[ext_resource type="Script" uid="uid://dwgbgeq5gwqvj" path="res://Scenes/focus_dummy.gd" id="4_acvpo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
 size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
 size = Vector3(10, 0.1, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
 
 [node name="World" type="Node3D" unique_id=1415019361]
 
@@ -38,3 +41,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0024688, 0)
 transform = Transform3D(-3.5865654e-08, 0.5716315, -0.8205105, 2.4986807e-08, 0.8205105, 0.5716315, 1, -1.7763568e-15, -4.3711392e-08, -1.9354603, 3.316549, 0.025782108)
 current = true
 script = ExtResource("3_tsbx5")
+cam_sty = 1
+
+[node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6441858, -2.636818)
+mesh = SubResource("SphereMesh_kgtat")
+script = ExtResource("4_acvpo")

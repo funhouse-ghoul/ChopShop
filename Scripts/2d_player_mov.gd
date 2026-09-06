@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var y_rot_spd := 1.0  
+@export var y_rot_spd := 1.0
 @export var lin_spd := 1.0
 enum Move_Style {TANK, FLAT2D, PLANETWIST}
 @export var mov_sty := Move_Style.TANK
