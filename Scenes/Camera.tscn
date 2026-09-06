@@ -38,12 +38,17 @@ shape = SubResource("BoxShape3D_kgtat")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0024688, 0)
 
 [node name="WorldCam" type="Camera3D" parent="." unique_id=215360606]
-transform = Transform3D(-3.5865654e-08, 0.5716315, -0.8205105, 2.4986807e-08, 0.8205105, 0.5716315, 1, -1.7763568e-15, -4.3711392e-08, -1.9354603, 3.316549, 0.025782108)
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 3, 0.026)
 current = true
 script = ExtResource("3_tsbx5")
-cam_sty = 1
+cam_sty = 2
 
 [node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6441858, -2.636818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.183847)
+mesh = SubResource("SphereMesh_kgtat")
+script = ExtResource("4_acvpo")
+
+[node name="FocusDummy2" type="MeshInstance3D" parent="." unique_id=1770837220 groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.0776982)
 mesh = SubResource("SphereMesh_kgtat")
 script = ExtResource("4_acvpo")
