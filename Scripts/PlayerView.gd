@@ -42,5 +42,4 @@ func multifocus():
 	for en in enemies:
 		rel_en_pos += en.position
 	rel_en_pos = rel_en_pos/(enemies.size()+1)
-	
 	cam_focus(rel_en_pos)
