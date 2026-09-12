@@ -2,7 +2,7 @@ extends Camera3D
 @onready var player := $"../PlayerCharacter" #Assumes root is world
 @onready var focus_loc: Vector3
 
-enum Cam_Style {PLAYERFOLLOW, PLAYERFACING, MULTIFOCUS}
+enum Cam_Style {PLAYERFOLLOW, PLAYERLOOK3RD, MULTIFOCUS}
 @export var cam_sty := Cam_Style.PLAYERFOLLOW
 
 @onready var enemies
@@ -15,23 +15,29 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	match cam_sty:
 		Cam_Style.PLAYERFOLLOW:
-			player_only_follow()
-		Cam_Style.PLAYERFACING:
-			face_player_forward()
+			focus_on_player()
+		Cam_Style.PLAYERLOOK3RD:
+			focus_players_forward()
 		Cam_Style.MULTIFOCUS:
 			multifocus()
 	pass
 
+#Details how camera focuses on a particular point
+#This point is provided by other functions
 func cam_focus(new_loc: Vector3):
 	focus_loc = lerp(focus_loc, new_loc,.3)
 	look_at(focus_loc)
 
-func player_only_follow():
+#Camera exclusively looks at the player's 
+func focus_on_player():
 	cam_focus(player.position)
-	
-func face_player_forward():
+
+#Camera effectively copies the player's forward vector
+func focus_players_forward():
 	cam_focus(position+player.basis.z)
-	
+
+#Helper functions to get all enemies in the scene
+#TODO: Make it only relevant to a particular radius
 func update_enemies_list():
 	enemies = get_tree().get_nodes_in_group("enemies")
 
