@@ -1,11 +1,16 @@
 extends Camera3D
-@onready var player := $"../PlayerCharacter" #Assumes root is world
+#Focus Variables
 @onready var focus_loc: Vector3
-
+@onready var player := $"../PlayerCharacter" #Assumes root is world
+@onready var enemies
 enum Cam_Style {PLAYERFOLLOW, PLAYERLOOK3RD, MULTIFOCUS}
 @export var cam_sty := Cam_Style.PLAYERFOLLOW
 
-@onready var enemies
+#Position Variables
+@onready var spring_arm = $"../PlayerCharacter/PlayerSpringArm"
+enum Cam_Pos {BEHIND = 1, FREE = 2, FIXED = 3}
+@export var cam_pos := Cam_Pos.BEHIND
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(player)
@@ -20,7 +25,6 @@ func _process(delta: float) -> void:
 			focus_players_forward()
 		Cam_Style.MULTIFOCUS:
 			multifocus()
-	pass
 
 #Details how camera focuses on a particular point
 #This point is provided by other functions
@@ -49,3 +53,9 @@ func multifocus():
 		rel_en_pos += en.position
 	rel_en_pos = rel_en_pos/(enemies.size()+1)
 	cam_focus(rel_en_pos)
+
+func switch_cam_position():
+	
+
+func arm_follow():
+	reparent(spring_arm)

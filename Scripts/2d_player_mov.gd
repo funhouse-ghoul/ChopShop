@@ -33,11 +33,11 @@ func proc_y_rotation(delta):
 
 #Applies motion to object in x axis
 func get_lin_move_x(): 
-	return -basis.x*Input.get_axis("io+x","io-x")
+	return -basis.z*Input.get_axis("io+x","io-x")
 
 #Applies motion to object in y axis
 func get_lin_move_y():
-	return -basis.z*Input.get_axis("io+y","io-y")
+	return basis.x*Input.get_axis("io+y","io-y")
 
 #Encapsulate representing "Tank Controls"
 func lin_1d_and_rot(delta):
