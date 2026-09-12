@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerCharacter
 
 @export var y_rot_spd := 1.0
 @export var lin_spd := 1.0

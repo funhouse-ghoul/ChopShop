@@ -3,7 +3,8 @@
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_na4qu"]
 [ext_resource type="PackedScene" uid="uid://2besls77sjdb" path="res://Prefabs/player_character.tscn" id="2_tsbx5"]
 [ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scripts/PlayerView.gd" id="3_tsbx5"]
-[ext_resource type="Script" uid="uid://dwgbgeq5gwqvj" path="res://Scenes/focus_dummy.gd" id="4_acvpo"]
+[ext_resource type="Script" uid="uid://dwgbgeq5gwqvj" path="res://Scripts/focus_dummy.gd" id="4_acvpo"]
+[ext_resource type="Script" uid="uid://b52lcfw07mu63" path="res://Scripts/cam_point.gd" id="5_tj2bt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
 size = Vector2(10, 10)
@@ -12,6 +13,9 @@ size = Vector2(10, 10)
 size = Vector3(10, 0.1, 10)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_abukt"]
+size = Vector3(11.785828, 3.2636719, 3.7364502)
 
 [node name="World" type="Node3D" unique_id=1415019361]
 
@@ -37,11 +41,11 @@ shape = SubResource("BoxShape3D_kgtat")
 [node name="PlayerCharacter" parent="." unique_id=825253521 instance=ExtResource("2_tsbx5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0024688, 0)
 
-[node name="WorldCam" type="Camera3D" parent="." unique_id=215360606]
+[node name="PlayerView" type="Camera3D" parent="." unique_id=215360606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
 current = true
 script = ExtResource("3_tsbx5")
-cam_sty = null
+cam_pos = 2
 
 [node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.183847)
@@ -52,5 +56,26 @@ script = ExtResource("4_acvpo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.0776982)
 mesh = SubResource("SphereMesh_kgtat")
 script = ExtResource("4_acvpo")
+
+[node name="CamPoint" type="Node3D" parent="." unique_id=614926329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1805923, 1.5498438, -3.9205499)
+script = ExtResource("5_tj2bt")
+
+[node name="Area3D" type="Area3D" parent="CamPoint" unique_id=1474072297]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CamPoint/Area3D" unique_id=808089028]
+shape = SubResource("BoxShape3D_abukt")
+
+[node name="CamPoint2" type="Node3D" parent="." unique_id=1904548806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1805923, 1.5498438, 3.054947)
+script = ExtResource("5_tj2bt")
+
+[node name="Area3D" type="Area3D" parent="CamPoint2" unique_id=541977239]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CamPoint2/Area3D" unique_id=1711519622]
+shape = SubResource("BoxShape3D_abukt")
+
+[connection signal="body_entered" from="CamPoint/Area3D" to="CamPoint" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="CamPoint2/Area3D" to="CamPoint2" method="_on_area_3d_body_entered"]
 
 [editable path="PlayerCharacter"]
