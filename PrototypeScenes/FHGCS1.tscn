@@ -13,14 +13,13 @@ size = Vector3(10, 0.1, 10)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_kgtat"]
-
 [node name="World" type="Node3D" unique_id=1415019361]
 
 [node name="Environment" type="Node3D" parent="." unique_id=1587728660]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1806852919]
 transform = Transform3D(1, 0, 0, 0, -0.00077621534, 0.9999997, 0, -0.9999997, -0.00077621534, 0, 4.8310947, 0)
+light_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2083300055]
 environment = ExtResource("1_20fo3")
@@ -37,7 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_kgtat")
 
 [node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.183847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3522875, 4.308757)
 mesh = SubResource("SphereMesh_kgtat")
 script = ExtResource("4_53jkq")
 
@@ -49,16 +48,8 @@ script = ExtResource("4_53jkq")
 [node name="Caver" parent="." unique_id=825253521 instance=ExtResource("4_u2smc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117708, 0)
 
-[node name="HeadMesh" type="MeshInstance3D" parent="Caver" unique_id=185529875]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2439694, 0)
-mesh = SubResource("PrismMesh_kgtat")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Caver/HeadMesh" unique_id=1162367092]
-
 [node name="PlayerView" type="Camera3D" parent="." unique_id=215360606 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
 current = true
 script = ExtResource("3_aq51s")
 player = NodePath("../Caver")
-
-[editable path="Caver"]
