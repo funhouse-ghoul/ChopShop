@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dh5c1xp34wump"]
 
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_20fo3"]
-[ext_resource type="PackedScene" uid="uid://2besls77sjdb" path="res://Prefabs/player_character.tscn" id="2_5ohui"]
 [ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scripts/PlayerView.gd" id="3_aq51s"]
 [ext_resource type="Script" uid="uid://dwgbgeq5gwqvj" path="res://Scripts/focus_dummy.gd" id="4_53jkq"]
+[ext_resource type="PackedScene" uid="uid://diy65xc6ja1pr" path="res://Prefabs/caver.tscn" id="4_u2smc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
 size = Vector2(10, 10)
@@ -11,10 +11,9 @@ size = Vector2(10, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
 size = Vector3(10, 0.1, 10)
 
-[sub_resource type="PrismMesh" id="PrismMesh_kgtat"]
-size = Vector3(0.5, 0.5, 0.5)
-
 [sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_kgtat"]
 
 [node name="World" type="Node3D" unique_id=1415019361]
 
@@ -37,17 +36,11 @@ mesh = SubResource("PlaneMesh_kgtat")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_kgtat")
 
-[node name="PlayerCharacter" parent="." unique_id=825253521 instance=ExtResource("2_5ohui")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0024688, 0)
-
-[node name="Head" type="MeshInstance3D" parent="PlayerCharacter" unique_id=1724353307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2579992, 0)
-mesh = SubResource("PrismMesh_kgtat")
-
-[node name="PlayerView" type="Camera3D" parent="." unique_id=215360606]
+[node name="PlayerView" type="Camera3D" parent="." unique_id=215360606 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
 current = true
 script = ExtResource("3_aq51s")
+player = NodePath("../Caver")
 cam_pos = 2
 
 [node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
@@ -60,4 +53,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.0776982)
 mesh = SubResource("SphereMesh_kgtat")
 script = ExtResource("4_53jkq")
 
-[editable path="PlayerCharacter"]
+[node name="Caver" parent="." unique_id=825253521 instance=ExtResource("4_u2smc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117708, 0)
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Caver" unique_id=185529875]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2439694, 0)
+mesh = SubResource("PrismMesh_kgtat")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Caver/HeadMesh" unique_id=1162367092]
+
+[editable path="Caver"]

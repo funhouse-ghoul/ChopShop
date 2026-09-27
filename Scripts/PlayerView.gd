@@ -3,7 +3,8 @@ class_name PlayerView
 
 #Focus Variables
 @onready var focus_loc: Vector3
-@onready var player := $"../PlayerCharacter" #Assumes root is world
+#@export var player := $"../PlayerCharacter" #Assumes root is world
+@export var player: PlayerCharacter
 @onready var enemies
 enum Cam_Style {PLAYERFOLLOW, PLAYERLOOK3RD, MULTIFOCUS}
 @export var cam_sty := Cam_Style.PLAYERFOLLOW

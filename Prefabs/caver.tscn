@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://diy65xc6ja1pr"]
+
+[ext_resource type="PackedScene" uid="uid://2besls77sjdb" path="res://Prefabs/player_character.tscn" id="1_o77wn"]
+
+[node name="Caver" unique_id=825253521 instance=ExtResource("1_o77wn")]
