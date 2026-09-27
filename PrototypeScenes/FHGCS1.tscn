@@ -2,7 +2,6 @@
 
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_20fo3"]
 [ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scripts/PlayerView.gd" id="3_aq51s"]
-[ext_resource type="Script" uid="uid://dwgbgeq5gwqvj" path="res://Scripts/focus_dummy.gd" id="4_53jkq"]
 [ext_resource type="PackedScene" uid="uid://diy65xc6ja1pr" path="res://Prefabs/caver.tscn" id="4_u2smc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
@@ -10,8 +9,6 @@ size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
 size = Vector3(10, 0.1, 10)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
 
 [node name="World" type="Node3D" unique_id=1415019361]
 
@@ -34,16 +31,6 @@ mesh = SubResource("PlaneMesh_kgtat")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/StaticBody3D" unique_id=1563215489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_kgtat")
-
-[node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3522875, 4.308757)
-mesh = SubResource("SphereMesh_kgtat")
-script = ExtResource("4_53jkq")
-
-[node name="FocusDummy2" type="MeshInstance3D" parent="." unique_id=1770837220 groups=["enemies"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.0776982)
-mesh = SubResource("SphereMesh_kgtat")
-script = ExtResource("4_53jkq")
 
 [node name="Caver" parent="." unique_id=825253521 instance=ExtResource("4_u2smc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117708, 0)

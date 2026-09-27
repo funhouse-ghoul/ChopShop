@@ -46,9 +46,11 @@ func focus_players_forward():
 	cam_focus(position+player.basis.z)
 
 #Helper functions to get all enemies in the scene
-#TODO: Make it only relevant to a particular radius
-func update_enemies_list():
+func add_enemy_to_list():
 	enemies = get_tree().get_nodes_in_group("enemies")
+	
+func remove_enemy_from_list():
+	pass
 
 #Relies on enemies list
 #Points camera ad middle distance between several focus points and player
