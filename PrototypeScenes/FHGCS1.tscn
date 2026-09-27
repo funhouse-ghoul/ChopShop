@@ -35,8 +35,13 @@ shape = SubResource("BoxShape3D_kgtat")
 [node name="Caver" parent="." unique_id=825253521 instance=ExtResource("4_u2smc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117708, 0)
 
+[node name="HeadMesh" parent="Caver" index="3" unique_id=775236689 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../PlayerView")
+
 [node name="PlayerView" type="Camera3D" parent="." unique_id=215360606 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
 current = true
 script = ExtResource("3_aq51s")
 player = NodePath("../Caver")
+
+[editable path="Caver"]
