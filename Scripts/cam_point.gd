@@ -15,4 +15,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is PlayerCharacter:
 		var view = get_viewport().get_camera_3d()
 		if view is PlayerView:
-			view.set_nearest_fixed_point(self)
+			view.set_cam_parent_point(self)

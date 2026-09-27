@@ -36,13 +36,6 @@ mesh = SubResource("PlaneMesh_kgtat")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_kgtat")
 
-[node name="PlayerView" type="Camera3D" parent="." unique_id=215360606 node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
-current = true
-script = ExtResource("3_aq51s")
-player = NodePath("../Caver")
-cam_pos = 2
-
 [node name="FocusDummy" type="MeshInstance3D" parent="." unique_id=737301670 groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.183847)
 mesh = SubResource("SphereMesh_kgtat")
@@ -61,5 +54,11 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.2439694, 0)
 mesh = SubResource("PrismMesh_kgtat")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Caver/HeadMesh" unique_id=1162367092]
+
+[node name="PlayerView" type="Camera3D" parent="." unique_id=215360606 node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
+current = true
+script = ExtResource("3_aq51s")
+player = NodePath("../Caver")
 
 [editable path="Caver"]

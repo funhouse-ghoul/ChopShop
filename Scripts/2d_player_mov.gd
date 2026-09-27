@@ -5,6 +5,10 @@ class_name PlayerCharacter
 @export var lin_spd := 1.0
 enum Move_Style {TANK, FLAT2D, PLANETWIST}
 @export var mov_sty := Move_Style.TANK
+
+#Making references to child objects other classes will use
+@onready var spring_arm := $PlayerSpringArm
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
