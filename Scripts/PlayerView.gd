@@ -4,7 +4,8 @@ class_name PlayerView
 #Focus Variables
 @onready var focus_loc: Vector3
 @export var player: PlayerCharacter
-@onready var enemies
+@onready var enemies: Array[EnemyBody]
+
 #Determines what the camera focuses on
 enum Cam_Focus {ENTITIES, FREE}
 @export var cam_foc := Cam_Focus.ENTITIES
@@ -39,18 +40,20 @@ func cam_focus(new_loc: Vector3):
 
 #Camera will look at the player and any other entities being tracked
 func focus_on_entities():
-	cam_focus(player.position+(player.basis.z*def_cam_offset))
+	multifocus()
 
 #Camera effectively copies the player's forward vector
 func focus_players_forward():
 	cam_focus(position+player.basis.z)
 
 #Helper functions to get all enemies in the scene
-func add_enemy_to_list():
-	enemies = get_tree().get_nodes_in_group("enemies")
+func insert_enemy(enemy:EnemyBody):
+	enemies.push_back(enemy)
+	print(enemies)
 	
-func remove_enemy_from_list():
-	pass
+func remove_enemy(enemy:EnemyBody):
+	enemies.erase(enemy)
+	print(enemies)
 
 #Relies on enemies list
 #Points camera ad middle distance between several focus points and player
@@ -73,3 +76,15 @@ func set_cam_parent_point(point: Node3D = null):
 	fixed_point = point
 	reparent(fixed_point)
 	position = Vector3.ZERO
+
+#function called when the character "notices" something
+#Called from Caver/Head/Vision
+func _on_vision_body_entered(body: Node3D) -> void:
+	if body is EnemyBody:
+		insert_enemy(body)
+
+#function called when the character "loses sight" of something
+#Called from Caver/Head/Vision
+func _on_vision_body_exited(body: Node3D) -> void:
+	if body is EnemyBody:
+		remove_enemy(body)

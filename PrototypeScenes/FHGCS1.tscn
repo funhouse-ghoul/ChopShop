@@ -2,6 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://b4qygowk1fcof" path="res://Environments/BasicEnv.tres" id="1_20fo3"]
 [ext_resource type="Script" uid="uid://c8sfewjxtsqqc" path="res://Scripts/PlayerView.gd" id="3_aq51s"]
+[ext_resource type="Script" uid="uid://uyryf5ksmpi7" path="res://Scripts/enemy.gd" id="4_dnmrq"]
 [ext_resource type="PackedScene" uid="uid://diy65xc6ja1pr" path="res://Prefabs/caver.tscn" id="4_u2smc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
@@ -9,6 +10,10 @@ size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
 size = Vector3(10, 0.1, 10)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kgtat"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
 
 [node name="World" type="Node3D" unique_id=1415019361]
 
@@ -43,5 +48,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
 current = true
 script = ExtResource("3_aq51s")
 player = NodePath("../Caver")
+
+[node name="DummyEnemy" type="CharacterBody3D" parent="." unique_id=1068117938]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5318344, 1.941963, 2.786612)
+script = ExtResource("4_dnmrq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DummyEnemy" unique_id=1446851361]
+shape = SubResource("SphereShape3D_kgtat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DummyEnemy" unique_id=1704777403]
+mesh = SubResource("SphereMesh_kgtat")
+
+[connection signal="body_entered" from="Caver/HeadMesh/Vision" to="PlayerView" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Caver/HeadMesh/Vision" to="PlayerView" method="_on_vision_body_exited"]
 
 [editable path="Caver"]

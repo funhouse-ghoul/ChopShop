@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://diy65xc6ja1pr"]
 
 [ext_resource type="PackedScene" uid="uid://2besls77sjdb" path="res://Prefabs/player_character.tscn" id="1_o77wn"]
-[ext_resource type="Script" uid="uid://cs7q35juo8vo6" path="res://Prefabs/head_control.gd" id="2_1jh3d"]
+[ext_resource type="Script" uid="uid://cs7q35juo8vo6" path="res://Scripts/head_control.gd" id="2_1jh3d"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_55inb"]
 
