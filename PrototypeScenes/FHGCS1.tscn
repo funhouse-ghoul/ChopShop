@@ -5,39 +5,101 @@
 [ext_resource type="PackedScene" uid="uid://cw1c4bkjmt774" path="res://Prefabs/dummy_enemy.tscn" id="4_dnmrq"]
 [ext_resource type="PackedScene" uid="uid://diy65xc6ja1pr" path="res://Prefabs/caver.tscn" id="4_u2smc"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_kgtat"]
+vertices = PackedVector3Array(-3.75, 0.35, -3.789237, -3.75, 0.35, 3.710763, 3.75, 0.35, 3.710763, 3.75, 0.35, -3.789237)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgtat"]
 size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgtat"]
 size = Vector3(10, 0.1, 10)
 
+[sub_resource type="BoxMesh" id="BoxMesh_kgtat"]
+size = Vector3(8.634304, 4.1694336, 0.5883789)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_abukt"]
+size = Vector3(8.624268, 4.16156, 0.56048584)
+
 [node name="World" type="Node3D" unique_id=1415019361]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1456840131]
+navigation_mesh = SubResource("NavigationMesh_kgtat")
+
+[node name="Geometry" type="Node3D" parent="NavigationRegion3D" unique_id=597021514]
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D/Geometry" unique_id=1694409454]
+mesh = SubResource("PlaneMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Geometry/Floor" unique_id=268375192]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Geometry/Floor/StaticBody3D" unique_id=1563215489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_kgtat")
+
+[node name="Wall" type="MeshInstance3D" parent="NavigationRegion3D/Geometry" unique_id=1615076701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025939941, 2.0556278, 4.70226)
+mesh = SubResource("BoxMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Geometry/Wall" unique_id=2027838337]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Geometry/Wall/StaticBody3D" unique_id=957775523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0057373047, 0.008551121, -0.0152282715)
+shape = SubResource("BoxShape3D_abukt")
+
+[node name="Wall2" type="MeshInstance3D" parent="NavigationRegion3D/Geometry" unique_id=1663609243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0051879883, 1.9977663, -4.743766)
+mesh = SubResource("BoxMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Geometry/Wall2" unique_id=20161883]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Geometry/Wall2/StaticBody3D" unique_id=1514712820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0057373047, 0.008551121, -0.0152282715)
+shape = SubResource("BoxShape3D_abukt")
+
+[node name="Wall3" type="MeshInstance3D" parent="NavigationRegion3D/Geometry" unique_id=1220135824]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.6621995, 1.9399047, -0.045071602)
+mesh = SubResource("BoxMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Geometry/Wall3" unique_id=1254489569]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Geometry/Wall3/StaticBody3D" unique_id=1340982824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0057373047, 0.008551121, -0.0152282715)
+shape = SubResource("BoxShape3D_abukt")
+
+[node name="Wall4" type="MeshInstance3D" parent="NavigationRegion3D/Geometry" unique_id=407183288]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.63952, 1.9399047, -0.045071602)
+mesh = SubResource("BoxMesh_kgtat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Geometry/Wall4" unique_id=18997924]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Geometry/Wall4/StaticBody3D" unique_id=1868765218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0057373047, 0.008551121, -0.0152282715)
+shape = SubResource("BoxShape3D_abukt")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1587728660]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1806852919]
 transform = Transform3D(1, 0, 0, 0, -0.00077621534, 0.9999997, 0, -0.9999997, -0.00077621534, 0, 4.8310947, 0)
-light_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+light_color = Color(0, 0, 0, 1)
+sky_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2083300055]
 environment = ExtResource("1_20fo3")
 
-[node name="Geometry" type="Node3D" parent="." unique_id=597021514]
-
-[node name="Floor" type="MeshInstance3D" parent="Geometry" unique_id=1694409454]
-mesh = SubResource("PlaneMesh_kgtat")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor" unique_id=268375192]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/StaticBody3D" unique_id=1563215489]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-shape = SubResource("BoxShape3D_kgtat")
-
 [node name="Caver" parent="." unique_id=825253521 instance=ExtResource("4_u2smc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.117708, 0)
 
-[node name="HeadMesh" parent="Caver" index="3" unique_id=775236689 node_paths=PackedStringArray("camera")]
+[node name="Head" parent="Caver" index="3" unique_id=775236689 node_paths=PackedStringArray("camera")]
 camera = NodePath("../../PlayerView")
+
+[node name="SpotLight3D" parent="Caver/Head" index="0" unique_id=906264947]
+light_color = Color(1, 1, 0.8, 1)
+light_energy = 10.0
+
+[node name="GlowLight" parent="Caver/Head" index="3" unique_id=1570118038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3461561, 0)
+light_color = Color(0.2742921, 0.8391858, 0.2879203, 1)
 
 [node name="PlayerView" type="Camera3D" parent="." unique_id=215360606 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.026)
@@ -47,21 +109,13 @@ player = NodePath("../Caver")
 
 [node name="DummyEnemies" type="Node3D" parent="." unique_id=1619773101]
 
-[node name="DummyEnemy" parent="DummyEnemies" unique_id=1901569788 instance=ExtResource("4_dnmrq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5318344, 1.941963, 2.786612)
+[node name="DummyEnemy" parent="DummyEnemies" unique_id=1901569788 node_paths=PackedStringArray("player") instance=ExtResource("4_dnmrq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5318344, 0.34892917, 2.786612)
+player = NodePath("../../Caver")
 
-[node name="DummyEnemy2" parent="DummyEnemies" unique_id=993876419 instance=ExtResource("4_dnmrq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.0864117, 1.941963, 2.786612)
-
-[node name="DummyEnemy3" parent="DummyEnemies" unique_id=1729567979 instance=ExtResource("4_dnmrq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5318344, 1.941963, -3.807673)
-
-[node name="DummyEnemy4" parent="DummyEnemies" unique_id=2059228995 instance=ExtResource("4_dnmrq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.2595811, 1.941963, -2.8141787)
-
-[connection signal="body_entered" from="Caver/HeadMesh/Vision" to="PlayerView" method="_on_vision_body_entered"]
-[connection signal="body_exited" from="Caver/HeadMesh/Vision" to="PlayerView" method="_on_vision_body_exited"]
-[connection signal="body_entered" from="Caver/HeadMesh/SpacAware" to="PlayerView" method="_on_spac_aware_body_entered"]
-[connection signal="body_exited" from="Caver/HeadMesh/SpacAware" to="PlayerView" method="_on_spac_aware_body_exited"]
+[connection signal="body_entered" from="Caver/Head/Vision" to="PlayerView" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Caver/Head/Vision" to="PlayerView" method="_on_vision_body_exited"]
+[connection signal="body_entered" from="Caver/Head/SpacAware" to="PlayerView" method="_on_spac_aware_body_entered"]
+[connection signal="body_exited" from="Caver/Head/SpacAware" to="PlayerView" method="_on_spac_aware_body_exited"]
 
 [editable path="Caver"]

@@ -4,7 +4,12 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kgtat"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abukt"]
+emission_enabled = true
+emission = Color(0.9372549, 0, 0, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
+material = SubResource("StandardMaterial3D_abukt")
 
 [node name="DummyEnemy" type="CharacterBody3D" unique_id=1901569788]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -15,3 +20,5 @@ shape = SubResource("SphereShape3D_kgtat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=537373049]
 mesh = SubResource("SphereMesh_kgtat")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1702260820]
