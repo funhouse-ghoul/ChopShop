@@ -10,7 +10,7 @@ radius = 3.5
 height = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kgtat"]
-radius = 5.0
+radius = 3.0
 
 [node name="Caver" unique_id=825253521 instance=ExtResource("1_o77wn")]
 
