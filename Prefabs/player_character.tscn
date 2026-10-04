@@ -17,4 +17,4 @@ mesh = SubResource("CapsuleMesh_u2smc")
 shape = SubResource("CapsuleShape3D_kgtat")
 
 [node name="PlayerSpringArm" type="SpringArm3D" parent="." unique_id=912092479]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9199412, -2.393285)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -2)

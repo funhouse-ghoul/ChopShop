@@ -55,8 +55,9 @@ func remove_enemy(enemy:EnemyBody):
 	enemies.erase(enemy)
 	print(enemies)
 
-#Relies on enemies list
+
 #Points camera ad middle distance between several focus points and player
+#Relies on enemies list
 func multifocus():
 	var rel_en_pos = player.position
 	for en in enemies:
