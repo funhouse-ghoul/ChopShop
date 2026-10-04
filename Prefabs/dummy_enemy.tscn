@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cw1c4bkjmt774"]
+
+[ext_resource type="Script" uid="uid://uyryf5ksmpi7" path="res://Scripts/enemy.gd" id="1_ad7ty"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kgtat"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kgtat"]
+
+[node name="DummyEnemy" type="CharacterBody3D" unique_id=1901569788]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_ad7ty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1762867092]
+shape = SubResource("SphereShape3D_kgtat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=537373049]
+mesh = SubResource("SphereMesh_kgtat")
